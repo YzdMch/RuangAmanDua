@@ -1,9 +1,9 @@
 package com.ubermensch.ruangamandua.data.local
 
 import android.content.Context
-import androidx.room3.Database
-import androidx.room3.RoomDatabase
-import androidx.room3.Room
+import androidx.room.Database
+import androidx.room.RoomDatabase
+import androidx.room.Room
 import androidx.sqlite.SQLiteConnection
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.ubermensch.ruangamandua.data.local.dao.*
@@ -29,7 +29,7 @@ abstract class RuangAmanDatabase : RoomDatabase() {
             return INSTANCE ?: synchronized(this) {
                 Room.databaseBuilder(context.applicationContext, RuangAmanDatabase::class.java, "ruangaman.db")
                     .addCallback(object : RoomDatabase.Callback() {
-                        override suspend fun onCreate(connection: SQLiteConnection) {
+                        override fun onCreate(connection: SQLiteConnection) {
                             super.onCreate(connection)
                             CoroutineScope(Dispatchers.IO).launch {
                                 INSTANCE?.let { seedDatabase(it) }

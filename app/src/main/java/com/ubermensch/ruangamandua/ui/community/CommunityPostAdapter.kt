@@ -9,6 +9,7 @@ import com.ubermensch.ruangamandua.databinding.ItemCommunityPostBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
+@Suppress("DEPRECATION")
 class CommunityPostAdapter(
     private val onLikeClick: (CommunityPost) -> Unit,
     private val onItemClick: (CommunityPost) -> Unit
