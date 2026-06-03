@@ -10,9 +10,9 @@ import com.google.android.material.snackbar.Snackbar
 import com.ruangaman.app.R
 import com.ubermensch.ruangamandua.data.local.RuangAmanDatabase
 import com.ubermensch.ruangamandua.data.local.repository.RuangAmanRepository
-import com.ruangaman.app.databinding.FragmentLoginBinding
+import com.ubermensch.ruangamandua.databinding.FragmentLoginBinding
 import com.ruangaman.app.ui.dashboard.MainActivity
-import com.ruangaman.app.utils.SessionManager
+import com.ubermensch.ruangamandua.utils.SessionManager
 
 class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null

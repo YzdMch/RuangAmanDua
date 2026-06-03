@@ -1,4 +1,4 @@
-package com.ruangaman.app.ui.education
+package com.ubermensch.ruangamandua.ui.education
 
 import android.os.Bundle
 import android.view.*
@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ubermensch.ruangamandua.data.local.RuangAmanDatabase
 import com.ubermensch.ruangamandua.data.local.repository.RuangAmanRepository
-import com.ruangaman.app.databinding.FragmentEducationBinding
+import com.ubermensch.ruangamandua.databinding.FragmentEducationBinding
 
 class EducationFragment : Fragment() {
     private var _binding: FragmentEducationBinding? = null

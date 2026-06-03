@@ -3,7 +3,7 @@ package com.ruangaman.app.ui.auth
 import androidx.lifecycle.*
 import com.ubermensch.ruangamandua.data.local.entity.User
 import com.ubermensch.ruangamandua.data.local.repository.RuangAmanRepository
-import com.ruangaman.app.utils.ValidationUtils
+import com.ubermensch.ruangamandua.utils.ValidationUtils
 import kotlinx.coroutines.launch
 
 sealed class AuthState {

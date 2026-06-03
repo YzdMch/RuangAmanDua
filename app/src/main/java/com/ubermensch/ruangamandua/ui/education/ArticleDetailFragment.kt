@@ -1,4 +1,4 @@
-package com.ruangaman.app.ui.education
+package com.ubermensch.ruangamandua.ui.education
 
 import android.os.Bundle
 import android.view.*
@@ -10,7 +10,7 @@ import androidx.navigation.fragment.navArgs
 import com.ubermensch.ruangamandua.data.local.repository.RuangAmanRepository
 import com.ubermensch.ruangamandua.data.local.RuangAmanDatabase
 import com.ubermensch.ruangamandua.data.local.entity.Article
-import com.ruangaman.app.databinding.FragmentArticleDetailBinding
+import com.ubermensch.ruangamandua.databinding.FragmentArticleDetailBinding
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 

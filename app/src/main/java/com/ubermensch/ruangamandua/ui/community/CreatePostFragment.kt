@@ -1,4 +1,4 @@
-package com.ruangaman.app.ui.community
+package com.ubermensch.ruangamandua.ui.community
 
 import android.os.Bundle
 import android.view.*
@@ -9,8 +9,8 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.ubermensch.ruangamandua.data.local.RuangAmanDatabase
 import com.ubermensch.ruangamandua.data.local.repository.RuangAmanRepository
-import com.ruangaman.app.databinding.FragmentCreatePostBinding
-import com.ruangaman.app.utils.SessionManager
+import com.ubermensch.ruangamandua.databinding.FragmentCreatePostBinding
+import com.ubermensch.ruangamandua.utils.SessionManager
 
 class CreatePostFragment : Fragment() {
     private var _binding: FragmentCreatePostBinding? = null

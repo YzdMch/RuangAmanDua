@@ -1,4 +1,4 @@
-package com.ruangaman.app.ui.community
+package com.ubermensch.ruangamandua.ui.community
 
 import android.os.Bundle
 import android.view.*
@@ -7,10 +7,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.ruangaman.app.R
+import com.ubermensch.ruangamandua.R
 import com.ubermensch.ruangamandua.data.local.RuangAmanDatabase
 import com.ubermensch.ruangamandua.data.local.repository.RuangAmanRepository
-import com.ruangaman.app.databinding.FragmentCommunityBinding
+import com.ubermensch.ruangamandua.databinding.FragmentCommunityBinding
 
 class CommunityFragment : Fragment() {
     private var _binding: FragmentCommunityBinding? = null

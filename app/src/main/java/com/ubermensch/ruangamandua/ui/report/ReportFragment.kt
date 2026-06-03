@@ -1,4 +1,4 @@
-package com.ruangaman.app.ui.report
+package com.ubermensch.ruangamandua.ui.report
 
 import android.app.DatePickerDialog
 import android.os.Bundle
@@ -9,8 +9,8 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.ubermensch.ruangamandua.data.local.RuangAmanDatabase
 import com.ubermensch.ruangamandua.data.local.repository.RuangAmanRepository
-import com.ruangaman.app.databinding.FragmentReportBinding
-import com.ruangaman.app.utils.SessionManager
+import com.ubermensch.ruangamandua.databinding.FragmentReportBinding
+import com.ubermensch.ruangamandua.utils.SessionManager
 import java.text.SimpleDateFormat
 import java.util.*
 

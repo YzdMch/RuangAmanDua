@@ -1,4 +1,4 @@
-package com.ruangaman.app.utils
+package com.ubermensch.ruangamandua.utils
 
 object ValidationUtils {
     fun isValidEmail(email: String) =

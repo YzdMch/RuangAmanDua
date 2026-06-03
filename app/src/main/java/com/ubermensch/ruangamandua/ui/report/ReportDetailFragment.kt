@@ -1,4 +1,4 @@
-package com.ruangaman.app.ui.report
+package com.ubermensch.ruangamandua.ui.report
 
 import android.os.Bundle
 import android.view.*
@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.ubermensch.ruangamandua.data.local.RuangAmanDatabase
 import com.ubermensch.ruangamandua.data.local.repository.RuangAmanRepository
-import com.ruangaman.app.databinding.FragmentReportDetailBinding
+import com.ubermensch.ruangamandua.databinding.FragmentReportDetailBinding
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 

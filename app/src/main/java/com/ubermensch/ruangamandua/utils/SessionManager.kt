@@ -1,4 +1,4 @@
-package com.ruangaman.app.utils
+package com.ubermensch.ruangamandua.utils
 
 import android.content.Context
 import android.content.SharedPreferences
