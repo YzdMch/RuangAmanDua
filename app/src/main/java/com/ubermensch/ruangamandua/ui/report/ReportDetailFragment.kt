@@ -1,60 +1,68 @@
-package com.ubermensch.ruangamandua.ui.report
+package com.ruangaman.app.ui.report
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import com.ubermensch.ruangamandua.R
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.*
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import com.ubermensch.ruangamandua.data.local.RuangAmanDatabase
+import com.ubermensch.ruangamandua.data.local.repository.RuangAmanRepository
+import com.ruangaman.app.databinding.FragmentReportDetailBinding
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.launch
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ReportDetailFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ReportDetailFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var _binding: FragmentReportDetailBinding? = null
+    private val binding get() = _binding!!
+    private val args: ReportDetailFragmentArgs by navArgs()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    private val viewModel: ReportDetailViewModel by viewModels {
+        ReportDetailViewModelFactory(RuangAmanRepository(RuangAmanDatabase.getInstance(requireContext())))
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        _binding = FragmentReportDetailBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.loadReport(args.reportId)
+        binding.ivBack.setOnClickListener { findNavController().navigateUp() }
+
+        viewModel.report.observe(viewLifecycleOwner) { report ->
+            report ?: return@observe
+            binding.tvReportId.text  = "ID Laporan: ${report.reportId}"
+            binding.tvStatus.text    = report.status
+            binding.tvTanggalKirim.text = "Dikirim pada ${report.tanggalKejadian}"
+            binding.tvJenisBullying.text = report.jenisBullying
+            binding.tvLokasi.text    = report.lokasi
+            binding.tvAnonim.text    = if (report.isAnonim) "Ya" else "Tidak"
+
+            val steps = listOf("Terkirim","Sedang Ditinjau","Investigasi","Selesai")
+            val idx = steps.indexOf(report.status)
+            listOf(binding.stepTerkirim, binding.stepDitinjau, binding.stepInvestigasi, binding.stepSelesai)
+                .forEachIndexed { i, v -> v.isActivated = i <= idx; v.isSelected = i == idx }
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_report_detail, container, false)
-    }
+    override fun onDestroyView() { super.onDestroyView(); _binding = null }
+}
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ReportDetailFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ReportDetailFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+class ReportDetailViewModel(private val repository: RuangAmanRepository) : ViewModel() {
+    private val _report = MutableLiveData<Report?>()
+    val report: LiveData<Report?> = _report
+
+    fun loadReport(id: Int) = viewModelScope.launch {
+        repository.getReportById(id).catch { emit(null) }.collect { _report.value = it }
     }
+}
+
+class ReportDetailViewModelFactory(private val repository: RuangAmanRepository) : ViewModelProvider.Factory {
+    @Suppress("UNCHECKED_CAST")
+    override fun <T : ViewModel> create(modelClass: Class<T>): T =
+        if (modelClass.isAssignableFrom(ReportDetailViewModel::class.java)) ReportDetailViewModel(repository) as T
+        else throw IllegalArgumentException("Unknown ViewModel")
 }

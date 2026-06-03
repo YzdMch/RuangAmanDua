@@ -1,5 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">RuangAmanDua</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">RuangAman</string>
+    <string name="login_title">Selamat Datang Kembali</string>
+    <string name="login_subtitle">Ruang amanmu untuk bercerita dan mencari dukungan tanpa rasa takut.</string>
+    <string name="register_title">Mulai Perjalanan Amanmu</string>
+    <string name="register_subtitle">Bergabunglah dengan komunitas kami. Privasi dan keamananmu adalah prioritas utama kami.</string>
+    <string name="btn_masuk">Masuk</string>
+    <string name="btn_daftar">Daftar →</string>
+    <string name="btn_kirim_laporan">Kirim Laporan</string>
+    <string name="empty_laporan">Belum ada laporan. Buat laporan baru.</string>
+    <string name="empty_artikel">Tidak ada artikel ditemukan.</string>
+    <string name="empty_post">Belum ada diskusi. Mulai yang pertama!</string>
+    <string name="label_jenis_perundungan">Jenis Perundungan</string>
+    <string name="label_waktu_lokasi">Waktu &amp; Lokasi</string>
+    <string name="label_detail_bukti">Detail &amp; Bukti</string>
+    <string name="hint_email">nama@email.com</string>
+    <string name="hint_password">••••••••</string>
+    <string name="hint_nama_lengkap">Masukkan nama lengkap</string>
+    <string name="hint_instansi">Masukkan nama instansimu</string>
+    <string name="hint_tanggal">mm/dd/yyyy</string>
+    <string name="hint_lokasi">Contoh: Kantin, Kelas</string>
+    <string name="hint_deskripsi">Ketik apa yang terjadi secara detail…</string>
+    <string name="lupa_kata_sandi">Lupa Kata Sandi?</string>
+    <string name="belum_punya_akun">Belum punya akun? </string>
+    <string name="sudah_punya_akun">Sudah punya akun? </string>
+    <string name="terms_text">Saya menyetujui Syarat &amp; Ketentuan serta Kebijakan Privasi. RuangAman menjamin kerahasiaan identitas pelapor.</string>
+    <string name="tips_hari_ini">TIPS HARI INI</string>
+    <string name="kontak_darurat">Kontak Darurat</string>
+    <string name="edukasi_populer">Edukasi Populer</string>
+    <string name="lihat_semua">Lihat Semua</string>
+    <string name="footer_copyright">© 2026 RuangAman. Privasimu adalah prioritas kami.</string>
 </resources>

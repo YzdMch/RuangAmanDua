@@ -1,60 +1,71 @@
-package com.ubermensch.ruangamandua.ui.education
+package com.ruangaman.app.ui.education
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import com.ubermensch.ruangamandua.R
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.*
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import com.ubermensch.ruangamandua.data.local.repository.RuangAmanRepository
+import com.ubermensch.ruangamandua.data.local.RuangAmanDatabase
+import com.ubermensch.ruangamandua.data.local.entity.Article
+import com.ruangaman.app.databinding.FragmentArticleDetailBinding
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.launch
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ArticleDetailFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ArticleDetailFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var _binding: FragmentArticleDetailBinding? = null
+    private val binding get() = _binding!!
+    private val args: ArticleDetailFragmentArgs by navArgs()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    private val viewModel: ArticleDetailViewModel by viewModels {
+        ArticleDetailViewModelFactory(RuangAmanRepository(RuangAmanDatabase.getInstance(requireContext())))
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        _binding = FragmentArticleDetailBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.loadArticle(args.articleId)
+        binding.ivBack.setOnClickListener { findNavController().navigateUp() }
+        binding.ivBookmark.setOnClickListener { viewModel.toggleSave() }
+
+        viewModel.article.observe(viewLifecycleOwner) { article ->
+            article ?: return@observe
+            binding.tvJudul.text      = article.judul
+            binding.tvKategori.text   = article.kategori
+            binding.tvWaktuBaca.text  = article.waktuBaca
+            binding.tvViewCount.text  = "${article.viewCount} dilihat"
+            binding.tvKonten.text     = article.konten
+            binding.ivBookmark.isSelected = article.isSaved
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_article_detail, container, false)
+    override fun onDestroyView() { super.onDestroyView(); _binding = null }
+}
+
+class ArticleDetailViewModel(private val repository: RuangAmanRepository) : ViewModel() {
+    private val _article = MutableLiveData<Article?>()
+    val article: LiveData<Article?> = _article
+
+    fun loadArticle(id: Int) = viewModelScope.launch {
+        repository.getArticleById(id).catch { emit(null) }.collect { _article.value = it }
+        repository.incrementViewCount(id)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ArticleDetailFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ArticleDetailFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    fun toggleSave() {
+        val current = _article.value ?: return
+        viewModelScope.launch { repository.toggleSaveArticle(current.id, !current.isSaved) }
     }
+}
+
+class ArticleDetailViewModelFactory(private val repository: RuangAmanRepository) : ViewModelProvider.Factory {
+    @Suppress("UNCHECKED_CAST")
+    override fun <T : ViewModel> create(modelClass: Class<T>): T =
+        if (modelClass.isAssignableFrom(ArticleDetailViewModel::class.java)) ArticleDetailViewModel(repository) as T
+        else throw IllegalArgumentException("Unknown ViewModel")
 }

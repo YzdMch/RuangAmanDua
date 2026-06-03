@@ -29,6 +29,11 @@ android {
             )
         }
     }
+
+    buildFeatures {
+        dataBinding = true
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -43,7 +48,10 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.room3.common.jvm)
     implementation(libs.androidx.room3.runtime)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation("de.hdodenhof:circleimageview:3.1.0")
 }

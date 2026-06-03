@@ -1,14 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.education.ArticleDetailFragment">
+    android:background="@color/background">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="32dp">
 
-</FrameLayout>
+        <!-- Top App Bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="16dp">
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@android:drawable/ic_menu_revert"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Kembali"
+                android:layout_marginEnd="8dp"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Detail Artikel"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="@color/text_primary"/>
+        </LinearLayout>
+
+        <!-- Article Hero Image Placeholder -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/teal_light"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- Category & Read Time -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="20dp"
+            android:layout_marginBottom="12dp">
+            <TextView
+                android:id="@+id/tvKategori"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kategori"
+                android:textColor="@color/teal_primary"
+                android:textSize="12sp"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp"
+                android:background="@drawable/bg_chip_topic"
+                android:layout_marginEnd="8dp"/>
+            <TextView
+                android:id="@+id/tvWaktuBaca"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5 min baca"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                android:layout_marginEnd="8dp"/>
+            <TextView
+                android:id="@+id/tvViewCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="• 0 views"
+                android:textColor="@color/text_hint"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+        <!-- Article Title -->
+        <TextView
+            android:id="@+id/tvJudul"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Judul Artikel"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:textColor="@color/text_primary"
+            android:paddingHorizontal="20dp"
+            android:layout_marginBottom="8dp"
+            android:lineSpacingMultiplier="1.2"/>
+
+        <!-- Author & Date -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="20dp"
+            android:layout_marginBottom="20dp">
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_profile"
+                app:tint="@color/text_secondary"
+                android:layout_marginEnd="8dp"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tvPenulis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Penulis"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"
+                    android:textSize="13sp"/>
+                <TextView
+                    android:id="@+id/tvTanggalPublish"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tanggal"
+                    android:textColor="@color/text_hint"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- Article Content -->
+        <TextView
+            android:id="@+id/tvKonten"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Konten artikel akan ditampilkan di sini."
+            android:textColor="@color/text_primary"
+            android:textSize="15sp"
+            android:lineSpacingMultiplier="1.7"
+            android:paddingHorizontal="20dp"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- Related Articles Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Artikel Terkait"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:textColor="@color/text_primary"
+            android:paddingHorizontal="20dp"
+            android:layout_marginBottom="12dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvArtikelTerkait"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"/>
+
+    </LinearLayout>
+</ScrollView>

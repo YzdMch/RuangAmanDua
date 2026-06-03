@@ -1,14 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.profile.ProfileFragment">
+    android:background="@color/background">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="20dp">
 
-</FrameLayout>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="🛡️ RuangAman" android:textColor="@color/teal_primary"
+            android:textSize="18sp" android:textStyle="bold" android:layout_marginBottom="20dp"/>
+
+        <!-- Profile Header -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:gravity="center" android:layout_marginBottom="20dp">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="80dp" android:layout_height="80dp"
+                android:src="@mipmap/ic_launcher_round"
+                android:layout_marginBottom="12dp"/>
+            <TextView android:id="@+id/tvNama" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="Nama Pengguna"
+                android:textStyle="bold" android:textSize="20sp" android:textColor="@color/text_primary"/>
+            <TextView android:id="@+id/tvInstansi" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="Instansi"
+                android:textColor="@color/text_secondary" android:layout_marginTop="4dp"/>
+        </LinearLayout>
+
+        <!-- Stats -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_marginBottom="20dp">
+            <androidx.cardview.widget.CardView style="@style/Widget.RuangAman.Card"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:layout_marginEnd="8dp"
+                app:cardBackgroundColor="@color/teal_primary">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="16dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Laporan Selesai" android:textColor="#CCffffff" android:textSize="12sp"/>
+                    <TextView android:id="@+id/tvLaporanSelesai" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text="0"
+                        android:textColor="@color/surface_white" android:textStyle="bold" android:textSize="24sp"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView style="@style/Widget.RuangAman.Card"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:layout_marginStart="8dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="16dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Artikel Disimpan" android:textColor="@color/text_secondary" android:textSize="12sp"/>
+                    <TextView android:id="@+id/tvArtikelDisimpan" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text="0"
+                        android:textColor="@color/text_primary" android:textStyle="bold" android:textSize="24sp"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <!-- Menu Aktivitas -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="AKTIVITAS" android:textColor="@color/text_secondary" android:textSize="11sp"
+            android:letterSpacing="0.1" android:layout_marginBottom="8dp"/>
+
+        <androidx.cardview.widget.CardView style="@style/Widget.RuangAman.Card"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout android:id="@+id/menuLaporanSaya" android:layout_width="match_parent"
+                    android:layout_height="56dp" android:orientation="horizontal" android:gravity="center_vertical"
+                    android:padding="16dp" android:background="?attr/selectableItemBackground">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:text="📋  Laporan Saya" android:textSize="15sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="›"/>
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider"/>
+                <LinearLayout android:id="@+id/menuArtikelDisimpan" android:layout_width="match_parent"
+                    android:layout_height="56dp" android:orientation="horizontal" android:gravity="center_vertical"
+                    android:padding="16dp" android:background="?attr/selectableItemBackground">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:text="🔖  Artikel Disimpan" android:textSize="15sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="›"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Menu Sistem -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="SISTEM" android:textColor="@color/text_secondary" android:textSize="11sp"
+            android:letterSpacing="0.1" android:layout_marginBottom="8dp"/>
+
+        <androidx.cardview.widget.CardView style="@style/Widget.RuangAman.Card"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout android:id="@+id/menuPengaturan" android:layout_width="match_parent"
+                    android:layout_height="56dp" android:orientation="horizontal" android:gravity="center_vertical"
+                    android:padding="16dp" android:background="?attr/selectableItemBackground">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:text="⚙️  Pengaturan Akun" android:textSize="15sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="›"/>
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="56dp"
+                    android:orientation="horizontal" android:gravity="center_vertical"
+                    android:padding="16dp" android:background="?attr/selectableItemBackground">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:text="❓  Pusat Bantuan" android:textSize="15sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="›"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnKeluar"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="→  Keluar" android:textColor="@color/red_danger"
+            app:backgroundTint="#FFEBEE" android:layout_marginBottom="8dp"/>
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="RuangAman v1.0.0" android:gravity="center"
+            android:textColor="@color/text_hint" android:textSize="12sp"/>
+    </LinearLayout>
+</ScrollView>

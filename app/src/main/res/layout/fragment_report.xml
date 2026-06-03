@@ -1,14 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.report.ReportFragment">
+    android:background="@color/background">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="80dp">
+
+            <!-- Header -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="20dp"
+                android:paddingBottom="8dp">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="📋 Laporan Saya"
+                        android:textColor="@color/teal_primary"
+                        android:textSize="11sp"
+                        android:textAllCaps="true"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Riwayat Laporan"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_primary"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Info Banner -->
+            <androidx.cardview.widget.CardView
+                style="@style/Widget.RuangAman.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/teal_light">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:padding="16dp">
+                    <ImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:src="@drawable/ic_report"
+                        app:tint="@color/teal_primary"
+                        android:layout_marginEnd="12dp"/>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Laporanmu Aman"
+                            android:textStyle="bold"
+                            android:textSize="14sp"
+                            android:textColor="@color/teal_dark"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Identitasmu dijaga kerahasiaannya oleh sistem kami."
+                            android:textColor="@color/teal_primary"
+                            android:textSize="12sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Status Filter Chips -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:layout_marginBottom="16dp"
+                android:paddingHorizontal="20dp">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipSemua"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Semua"
+                        android:checkable="true"
+                        android:checked="true"
+                        android:layout_marginEnd="8dp"
+                        app:chipBackgroundColor="@color/teal_primary"
+                        android:textColor="@color/surface_white"/>
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipTerkirim"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Terkirim"
+                        android:checkable="true"
+                        android:layout_marginEnd="8dp"/>
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipDitinjau"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ditinjau"
+                        android:checkable="true"
+                        android:layout_marginEnd="8dp"/>
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipInvestigasi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Investigasi"
+                        android:checkable="true"
+                        android:layout_marginEnd="8dp"/>
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipSelesai"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Selesai"
+                        android:checkable="true"/>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- Empty State -->
+            <LinearLayout
+                android:id="@+id/layoutEmpty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="40dp"
+                android:visibility="gone">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📭"
+                    android:textSize="48sp"
+                    android:layout_marginBottom="12dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Belum ada laporan"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginBottom="8dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/empty_laporan"
+                    android:textColor="@color/text_secondary"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+            <!-- Reports RecyclerView -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvReports"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:paddingHorizontal="20dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- FAB Buat Laporan -->
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fabBuatLaporan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="20dp"
+        android:text="Buat Laporan"
+        app:icon="@drawable/ic_add"
+        app:backgroundTint="@color/teal_primary"
+        android:textColor="@color/surface_white"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

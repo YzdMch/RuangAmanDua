@@ -1,60 +1,87 @@
-package com.ubermensch.ruangamandua.ui.report
+package com.ruangaman.app.ui.report
 
+import android.app.DatePickerDialog
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import com.ubermensch.ruangamandua.R
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
+import com.ubermensch.ruangamandua.data.local.RuangAmanDatabase
+import com.ubermensch.ruangamandua.data.local.repository.RuangAmanRepository
+import com.ruangaman.app.databinding.FragmentReportBinding
+import com.ruangaman.app.utils.SessionManager
+import java.text.SimpleDateFormat
+import java.util.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ReportFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ReportFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var _binding: FragmentReportBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var sessionManager: SessionManager
+    private var selectedJenis = ""
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    private val viewModel: ReportViewModel by viewModels {
+        ReportViewModelFactory(RuangAmanRepository(RuangAmanDatabase.getInstance(requireContext())))
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        _binding = FragmentReportBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        sessionManager = SessionManager(requireContext())
+
+        // Jenis Bullying selector
+        val jenisMap = mapOf(binding.btnFisik to "Fisik", binding.btnVerbal to "Verbal", binding.btnCyber to "Cyber")
+        jenisMap.forEach { (btn, jenis) ->
+            btn.setOnClickListener {
+                selectedJenis = jenis
+                jenisMap.keys.forEach { it.isSelected = false }
+                btn.isSelected = true
+            }
+        }
+
+        // Date Picker
+        binding.etTanggal.setOnClickListener {
+            val cal = Calendar.getInstance()
+            DatePickerDialog(requireContext(), { _, y, m, d ->
+                cal.set(y, m, d)
+                binding.etTanggal.setText(SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(cal.time))
+            }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH)).show()
+        }
+
+        binding.ivBack.setOnClickListener { findNavController().navigateUp() }
+
+        binding.btnKirimLaporan.setOnClickListener {
+            viewModel.createReport(
+                userId        = sessionManager.getUserId(),
+                jenisBullying = selectedJenis,
+                tanggalKejadian = binding.etTanggal.text.toString(),
+                lokasi        = binding.etLokasi.text.toString(),
+                deskripsi     = binding.etDeskripsi.text.toString(),
+                isAnonim      = binding.switchAnonim.isChecked
+            )
+        }
+
+        viewModel.reportState.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                is ReportState.Loading -> { binding.btnKirimLaporan.isEnabled = false; binding.progressBar.visibility = View.VISIBLE }
+                is ReportState.Success -> {
+                    binding.progressBar.visibility = View.GONE
+                    Snackbar.make(binding.root, "Laporan berhasil dikirim!", Snackbar.LENGTH_LONG).show()
+                    findNavController().navigateUp()
+                }
+                is ReportState.Error -> {
+                    binding.btnKirimLaporan.isEnabled = true; binding.progressBar.visibility = View.GONE
+                    Snackbar.make(binding.root, state.message, Snackbar.LENGTH_LONG).show()
+                    viewModel.resetState()
+                }
+                else -> { binding.btnKirimLaporan.isEnabled = true; binding.progressBar.visibility = View.GONE }
+            }
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_report, container, false)
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ReportFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ReportFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
+    override fun onDestroyView() { super.onDestroyView(); _binding = null }
 }
