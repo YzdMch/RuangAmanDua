@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.ubermensch.ruangamandua.data.local.RuangAmanDatabase
 import com.ubermensch.ruangamandua.data.local.repository.RuangAmanRepository
+import com.ubermensch.ruangamandua.data.local.entity.Report
 import com.ubermensch.ruangamandua.databinding.FragmentReportDetailBinding
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch

@@ -7,7 +7,7 @@
 
     <!-- HOME -->
     <fragment android:id="@+id/homeFragment"
-        android:name="com.ruangaman.app.ui.dashboard.HomeFragment"
+        android:name="com.ubermensch.ruangamandua.ui.dashboard.HomeFragment"
         android:label="Home">
         <action android:id="@+id/action_homeFragment_to_reportFragment"
             app:destination="@id/reportFragment" />
@@ -19,7 +19,7 @@
 
     <!-- REPORT LIST -->
     <fragment android:id="@+id/reportListFragment"
-        android:name="com.ruangaman.app.ui.report.ReportListFragment"
+        android:name="com.ubermensch.ruangamandua.ui.report.ReportListFragment"
         android:label="Laporan">
         <action android:id="@+id/action_reportListFragment_to_reportFragment"
             app:destination="@id/reportFragment" />
@@ -31,19 +31,19 @@
 
     <!-- FORM LAPORAN -->
     <fragment android:id="@+id/reportFragment"
-        android:name="com.ruangaman.app.ui.report.ReportFragment"
+        android:name="com.ubermensch.ruangamandua.ui.report.ReportFragment"
         android:label="Buat Laporan" />
 
     <!-- DETAIL LAPORAN -->
     <fragment android:id="@+id/reportDetailFragment"
-        android:name="com.ruangaman.app.ui.report.ReportDetailFragment"
+        android:name="com.ubermensch.ruangamandua.ui.report.ReportDetailFragment"
         android:label="Detail Laporan">
         <argument android:name="reportId" app:argType="integer" />
     </fragment>
 
     <!-- EDUCATION -->
     <fragment android:id="@+id/educationFragment"
-        android:name="com.ruangaman.app.ui.education.EducationFragment"
+        android:name="com.ubermensch.ruangamandua.ui.education.EducationFragment"
         android:label="Edukasi">
         <action android:id="@+id/action_educationFragment_to_articleDetailFragment"
             app:destination="@id/articleDetailFragment">
@@ -53,14 +53,14 @@
 
     <!-- ARTICLE DETAIL -->
     <fragment android:id="@+id/articleDetailFragment"
-        android:name="com.ruangaman.app.ui.education.ArticleDetailFragment"
+        android:name="com.ubermensch.ruangamandua.ui.education.ArticleDetailFragment"
         android:label="Detail Artikel">
         <argument android:name="articleId" app:argType="integer" />
     </fragment>
 
     <!-- COMMUNITY -->
     <fragment android:id="@+id/communityFragment"
-        android:name="com.ruangaman.app.ui.community.CommunityFragment"
+        android:name="com.ubermensch.ruangamandua.ui.community.CommunityFragment"
         android:label="Komunitas">
         <action android:id="@+id/action_communityFragment_to_createPostFragment"
             app:destination="@id/createPostFragment" />
@@ -71,18 +71,18 @@
     </fragment>
 
     <fragment android:id="@+id/createPostFragment"
-        android:name="com.ruangaman.app.ui.community.CreatePostFragment"
+        android:name="com.ubermensch.ruangamandua.ui.community.CreatePostFragment"
         android:label="Buat Post" />
 
     <fragment android:id="@+id/postDetailFragment"
-        android:name="com.ruangaman.app.ui.community.PostDetailFragment"
+        android:name="com.ubermensch.ruangamandua.ui.community.PostDetailFragment"
         android:label="Detail Post">
         <argument android:name="postId" app:argType="integer" />
     </fragment>
 
     <!-- PROFILE -->
     <fragment android:id="@+id/profileFragment"
-        android:name="com.ruangaman.app.ui.profile.ProfileFragment"
+        android:name="com.ubermensch.ruangamandua.ui.profile.ProfileFragment"
         android:label="Profil">
         <action android:id="@+id/action_profileFragment_to_reportListFragment"
             app:destination="@id/reportListFragment" />
@@ -93,10 +93,10 @@
     </fragment>
 
     <fragment android:id="@+id/savedArticlesFragment"
-        android:name="com.ruangaman.app.ui.profile.SavedArticlesFragment"
+        android:name="com.ubermensch.ruangamandua.ui.profile.SavedArticlesFragment"
         android:label="Artikel Disimpan" />
 
     <fragment android:id="@+id/editProfileFragment"
-        android:name="com.ruangaman.app.ui.profile.EditProfileFragment"
+        android:name="com.ubermensch.ruangamandua.ui.profile.EditProfileFragment"
         android:label="Edit Profil" />
 </navigation>

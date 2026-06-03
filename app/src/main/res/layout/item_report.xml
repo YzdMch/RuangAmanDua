@@ -28,7 +28,7 @@
             <TextView android:id="@+id/tvJenis" android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:paddingHorizontal="10dp" android:paddingVertical="3dp"
                 android:textColor="@color/surface_white" android:textSize="11sp"
-                android:background="@drawable/bg_tag_fisik" android:layout_marginEnd="8dp"/>
+                android:background="@drawable/bg_chip_topic" android:layout_marginEnd="8dp"/>
             <TextView android:id="@+id/tvTanggal" android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:textColor="@color/text_secondary" android:textSize="12sp"/>
         </LinearLayout>

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.ubermensch.ruangamandua.R
 import com.ubermensch.ruangamandua.data.local.RuangAmanDatabase
 import com.ubermensch.ruangamandua.data.local.repository.RuangAmanRepository
+import com.ubermensch.ruangamandua.data.local.entity.Report
 import com.ubermensch.ruangamandua.databinding.FragmentReportListBinding
 import com.ubermensch.ruangamandua.utils.SessionManager
 
