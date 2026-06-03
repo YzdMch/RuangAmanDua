@@ -1,4 +1,4 @@
-package com.ruangaman.app.ui.education
+package com.ubermensch.ruangamandua.ui.education
 
 import androidx.lifecycle.*
 import com.ubermensch.ruangamandua.data.local.entity.Article

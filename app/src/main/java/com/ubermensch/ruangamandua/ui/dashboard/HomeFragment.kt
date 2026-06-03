@@ -1,4 +1,4 @@
-package com.ruangaman.app.ui.dashboard
+package com.ubermensch.ruangamandua.ui.dashboard
 
 import android.os.Bundle
 import android.view.*
@@ -6,12 +6,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.ruangaman.app.R
+import com.ubermensch.ruangamandua.R
 import com.ubermensch.ruangamandua.data.local.RuangAmanDatabase
 import com.ubermensch.ruangamandua.data.local.repository.RuangAmanRepository
-import com.ruangaman.app.databinding.FragmentHomeBinding
-import com.ruangaman.app.ui.education.ArticleAdapter
-import com.ruangaman.app.utils.SessionManager
+import com.ubermensch.ruangamandua.databinding.FragmentHomeBinding
+import com.ubermensch.ruangamandua.ui.education.ArticleAdapter
+import com.ubermensch.ruangamandua.utils.SessionManager
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null

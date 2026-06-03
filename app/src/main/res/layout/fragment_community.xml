@@ -20,31 +20,54 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
                 android:padding="20dp"
-                android:paddingBottom="12dp">
-                <TextView
-                    android:layout_width="wrap_content"
+                android:paddingBottom="8dp">
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="💬 Komunitas"
-                    android:textColor="@color/teal_primary"
-                    android:textSize="11sp"
-                    android:textAllCaps="true"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Forum Diskusi"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/text_primary"
-                    android:layout_marginBottom="4dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Bagikan ceritamu dan dapatkan dukungan dari sesama."
-                    android:textColor="@color/text_secondary"
-                    android:textSize="13sp"/>
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="💬 Komunitas"
+                        android:textColor="@color/teal_primary"
+                        android:textSize="11sp"
+                        android:textAllCaps="true"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Forum Diskusi"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_primary"
+                        android:layout_marginBottom="4dp"/>
+                </LinearLayout>
             </LinearLayout>
+
+            <!-- Search Bar -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="12dp"
+                app:startIconDrawable="@android:drawable/ic_menu_search"
+                app:boxCornerRadiusTopStart="12dp"
+                app:boxCornerRadiusTopEnd="12dp"
+                app:boxCornerRadiusBottomStart="12dp"
+                app:boxCornerRadiusBottomEnd="12dp"
+                app:boxStrokeColor="@color/divider">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Cari diskusi…"
+                    android:imeOptions="actionSearch"
+                    android:inputType="text"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Topic Filter Chips -->
             <HorizontalScrollView
@@ -53,43 +76,39 @@
                 android:scrollbars="none"
                 android:paddingHorizontal="20dp"
                 android:layout_marginBottom="16dp">
-                <com.google.android.material.chip.ChipGroup
-                    android:id="@+id/chipGroupTopik"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:singleSelection="true">
+                    android:orientation="horizontal">
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/chipSemua"
+                        android:id="@+id/chipAllTopics"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Semua"
                         android:checkable="true"
-                        android:checked="true"/>
+                        android:checked="true"
+                        android:layout_marginEnd="8dp"/>
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/chipCurhat"
+                        android:id="@+id/chipPeerSupport"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Curhat"
-                        android:checkable="true"/>
+                        android:text="Peer Support"
+                        android:checkable="true"
+                        android:layout_marginEnd="8dp"/>
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/chipPertanyaan"
+                        android:id="@+id/chipHealingStories"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pertanyaan"
-                        android:checkable="true"/>
+                        android:text="Healing Stories"
+                        android:checkable="true"
+                        android:layout_marginEnd="8dp"/>
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/chipTips"
+                        android:id="@+id/chipCounselorQA"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Tips"
+                        android:text="Counselor Q&amp;A"
                         android:checkable="true"/>
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chipSukses"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Kisah Sukses"
-                        android:checkable="true"/>
-                </com.google.android.material.chip.ChipGroup>
+                </LinearLayout>
             </HorizontalScrollView>
 
             <!-- Stats Row -->
@@ -158,60 +177,26 @@
             </LinearLayout>
 
             <!-- Section Title -->
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
+                android:text="Diskusi Terbaru"
+                android:textStyle="bold"
+                android:textSize="17sp"
+                android:textColor="@color/text_primary"
                 android:paddingHorizontal="20dp"
-                android:layout_marginBottom="12dp">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Diskusi Terbaru"
-                    android:textStyle="bold"
-                    android:textSize="17sp"
-                    android:textColor="@color/text_primary"/>
-                <TextView
-                    android:id="@+id/tvSortBy"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Terbaru ▾"
-                    android:textColor="@color/teal_primary"
-                    android:textSize="13sp"/>
-            </LinearLayout>
+                android:layout_marginBottom="12dp"/>
 
             <!-- Empty State -->
-            <LinearLayout
-                android:id="@+id/layoutEmpty"
+            <TextView
+                android:id="@+id/tvEmpty"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:text="@string/empty_post"
+                android:textColor="@color/text_secondary"
                 android:gravity="center"
                 android:padding="40dp"
-                android:visibility="gone">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="🗨️"
-                    android:textSize="48sp"
-                    android:layout_marginBottom="12dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Belum ada diskusi"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:textColor="@color/text_primary"
-                    android:layout_marginBottom="8dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/empty_post"
-                    android:textColor="@color/text_secondary"
-                    android:gravity="center"/>
-            </LinearLayout>
+                android:visibility="gone"/>
 
             <!-- Posts RecyclerView -->
             <androidx.recyclerview.widget.RecyclerView

@@ -64,50 +64,46 @@
                 android:inputType="text"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Category Filter -->
+        <!-- Category Filter Chips -->
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scrollbars="none"
             android:paddingHorizontal="20dp"
             android:layout_marginBottom="16dp">
-            <com.google.android.material.chip.ChipGroup
-                android:id="@+id/chipGroupKategori"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:singleSelection="true">
+                android:orientation="horizontal">
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipSemua"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Semua"
                     android:checkable="true"
-                    android:checked="true"/>
+                    android:checked="true"
+                    android:layout_marginEnd="8dp"/>
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/chipBullying"
+                    android:id="@+id/chipTips"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Perundungan"
-                    android:checkable="true"/>
+                    android:text="Tips Pencegahan"
+                    android:checkable="true"
+                    android:layout_marginEnd="8dp"/>
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/chipCyber"
+                    android:id="@+id/chipHukum"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cyberbullying"
-                    android:checkable="true"/>
+                    android:text="Hukum"
+                    android:checkable="true"
+                    android:layout_marginEnd="8dp"/>
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipPsikologi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Psikologi"
                     android:checkable="true"/>
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chipHukum"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Hukum"
-                    android:checkable="true"/>
-            </com.google.android.material.chip.ChipGroup>
+            </LinearLayout>
         </HorizontalScrollView>
 
         <!-- Featured Article Banner -->
@@ -179,9 +175,9 @@
             android:padding="40dp"
             android:visibility="gone"/>
 
-        <!-- Articles RecyclerView -->
+        <!-- Articles RecyclerView: id=rvArticles to match EducationFragment.kt -->
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvArtikel"
+            android:id="@+id/rvArticles"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:nestedScrollingEnabled="false"/>

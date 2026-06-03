@@ -20,7 +20,7 @@
             android:gravity="center_vertical"
             android:padding="16dp">
             <ImageButton
-                android:id="@+id/btnBack"
+                android:id="@+id/ivBack"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@android:drawable/ic_menu_revert"
@@ -67,7 +67,7 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Form Section -->
+        <!-- Form Card -->
         <androidx.cardview.widget.CardView
             style="@style/Widget.RuangAman.Card"
             android:layout_width="match_parent"
@@ -89,7 +89,7 @@
                     android:textAllCaps="true"
                     android:layout_marginBottom="16dp"/>
 
-                <!-- Judul Diskusi -->
+                <!-- Judul -->
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.RuangAman.TextInputLayout"
                     android:layout_width="match_parent"
@@ -104,25 +104,16 @@
                         android:inputType="textCapSentences"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- Topik -->
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                <!-- Topic Spinner -->
+                <Spinner
+                    android:id="@+id/spinnerTopic"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Pilih Topik"
-                    app:boxCornerRadiusTopStart="10dp"
-                    app:boxCornerRadiusTopEnd="10dp"
-                    app:boxCornerRadiusBottomStart="10dp"
-                    app:boxCornerRadiusBottomEnd="10dp"
-                    android:layout_marginBottom="16dp">
-                    <AutoCompleteTextView
-                        android:id="@+id/dropdownTopik"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="none"/>
-                </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginBottom="16dp"
+                    android:padding="12dp"
+                    android:background="@drawable/bg_chip_topic"/>
 
-                <!-- Isi Diskusi -->
+                <!-- Konten -->
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.RuangAman.TextInputLayout"
                     android:layout_width="match_parent"
@@ -137,16 +128,6 @@
                         android:gravity="top"
                         android:inputType="textMultiLine|textCapSentences"/>
                 </com.google.android.material.textfield.TextInputLayout>
-
-                <TextView
-                    android:id="@+id/tvCharCount"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="0 / 500"
-                    android:textColor="@color/text_hint"
-                    android:textSize="12sp"
-                    android:gravity="end"
-                    android:layout_marginBottom="16dp"/>
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -192,7 +173,7 @@
 
         <!-- Submit Button -->
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnKirimPost"
+            android:id="@+id/btnPostkan"
             style="@style/Widget.RuangAman.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

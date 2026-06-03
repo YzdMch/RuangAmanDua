@@ -1,9 +1,9 @@
-package com.ruangaman.app.ui.community
+package com.ubermensch.ruangamandua.ui.community
 
 import androidx.lifecycle.*
 import com.ubermensch.ruangamandua.data.local.entity.CommunityPost
 import com.ubermensch.ruangamandua.data.local.repository.RuangAmanRepository
-import com.ruangaman.app.utils.ValidationUtils
+import com.ubermensch.ruangamandua.utils.ValidationUtils
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 

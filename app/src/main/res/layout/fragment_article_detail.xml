@@ -20,7 +20,7 @@
             android:gravity="center_vertical"
             android:padding="16dp">
             <ImageButton
-                android:id="@+id/btnBack"
+                android:id="@+id/ivBack"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@android:drawable/ic_menu_revert"
@@ -35,6 +35,13 @@
                 android:textStyle="bold"
                 android:textSize="18sp"
                 android:textColor="@color/text_primary"/>
+            <ImageButton
+                android:id="@+id/ivBookmark"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@android:drawable/btn_star_big_off"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Simpan artikel"/>
         </LinearLayout>
 
         <!-- Article Hero Image Placeholder -->
@@ -76,7 +83,7 @@
                 android:id="@+id/tvViewCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="• 0 views"
+                android:text="• 0 dilihat"
                 android:textColor="@color/text_hint"
                 android:textSize="12sp"/>
         </LinearLayout>
@@ -93,43 +100,6 @@
             android:paddingHorizontal="20dp"
             android:layout_marginBottom="8dp"
             android:lineSpacingMultiplier="1.2"/>
-
-        <!-- Author & Date -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="20dp"
-            android:layout_marginBottom="20dp">
-            <ImageView
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:src="@drawable/ic_profile"
-                app:tint="@color/text_secondary"
-                android:layout_marginEnd="8dp"/>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/tvPenulis"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Penulis"
-                    android:textStyle="bold"
-                    android:textColor="@color/text_primary"
-                    android:textSize="13sp"/>
-                <TextView
-                    android:id="@+id/tvTanggalPublish"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Tanggal"
-                    android:textColor="@color/text_hint"
-                    android:textSize="12sp"/>
-            </LinearLayout>
-        </LinearLayout>
 
         <!-- Divider -->
         <View

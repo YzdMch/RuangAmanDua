@@ -2,6 +2,7 @@ package com.ubermensch.ruangamandua.ui.community
 
 import android.os.Bundle
 import android.view.*
+import kotlin.collections.forEach
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels

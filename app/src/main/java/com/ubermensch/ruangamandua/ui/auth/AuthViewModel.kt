@@ -1,4 +1,4 @@
-package com.ruangaman.app.ui.auth
+package com.ubermensch.ruangamandua.ui.auth
 
 import androidx.lifecycle.*
 import com.ubermensch.ruangamandua.data.local.entity.User

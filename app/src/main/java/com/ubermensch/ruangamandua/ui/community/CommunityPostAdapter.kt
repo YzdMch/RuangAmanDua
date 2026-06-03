@@ -1,11 +1,11 @@
-package com.ruangaman.app.ui.community
+package com.ubermensch.ruangamandua.ui.community
 
 import android.view.*
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ubermensch.ruangamandua.data.local.entity.CommunityPost
-import com.ruangaman.app.databinding.ItemCommunityPostBinding
+import com.ubermensch.ruangamandua.databinding.ItemCommunityPostBinding
 import java.text.SimpleDateFormat
 import java.util.*
 

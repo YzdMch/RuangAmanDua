@@ -1,11 +1,11 @@
-package com.ruangaman.app.ui.education
+package com.ubermensch.ruangamandua.ui.education
 
 import android.view.*
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ubermensch.ruangamandua.data.local.entity.Article
-import com.ruangaman.app.databinding.ItemArticleBinding
+import com.ubermensch.ruangamandua.databinding.ItemArticleBinding
 
 class ArticleAdapter(
     private val onItemClick: (Article) -> Unit

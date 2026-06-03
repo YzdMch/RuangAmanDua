@@ -2,6 +2,7 @@ package com.ubermensch.ruangamandua.ui.education
 
 import android.os.Bundle
 import android.view.*
+import kotlin.getValue
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.*

@@ -1,4 +1,4 @@
-package com.ruangaman.app.ui.dashboard
+package com.ubermensch.ruangamandua.ui.dashboard
 
 import androidx.lifecycle.*
 import com.ubermensch.ruangamandua.data.local.entity.Article

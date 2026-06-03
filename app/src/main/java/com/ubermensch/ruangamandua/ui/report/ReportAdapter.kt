@@ -1,13 +1,13 @@
-package com.ruangaman.app.ui.report
+package com.ubermensch.ruangamandua.ui.report
 
 import android.view.*
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.ruangaman.app.R
+import com.ubermensch.ruangamandua.R
 import com.ubermensch.ruangamandua.data.local.entity.Report
-import com.ruangaman.app.databinding.ItemReportBinding
+import com.ubermensch.ruangamandua.databinding.ItemReportBinding
 
 class ReportAdapter(
     private val onItemClick: (Report) -> Unit,

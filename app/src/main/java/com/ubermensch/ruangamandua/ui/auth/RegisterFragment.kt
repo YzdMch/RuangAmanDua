@@ -1,4 +1,4 @@
-package com.ruangaman.app.ui.auth
+package com.ubermensch.ruangamandua.ui.auth
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,9 +9,9 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.ubermensch.ruangamandua.data.local.RuangAmanDatabase
 import com.ubermensch.ruangamandua.data.local.repository.RuangAmanRepository
-import com.ruangaman.app.databinding.FragmentRegisterBinding
-import com.ruangaman.app.ui.dashboard.MainActivity
-import com.ruangaman.app.utils.SessionManager
+import com.ubermensch.ruangamandua.databinding.FragmentRegisterBinding
+import com.ubermensch.ruangamandua.ui.dashboard.MainActivity
+import com.ubermensch.ruangamandua.utils.SessionManager
 
 class RegisterFragment : Fragment() {
     private var _binding: FragmentRegisterBinding? = null

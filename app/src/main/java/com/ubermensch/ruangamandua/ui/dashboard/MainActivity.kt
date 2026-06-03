@@ -1,11 +1,11 @@
-package com.ruangaman.app.ui.dashboard
+package com.ubermensch.ruangamandua.ui.dashboard
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.ruangaman.app.R
-import com.ruangaman.app.databinding.ActivityMainBinding
+import com.ubermensch.ruangamandua.R
+import com.ubermensch.ruangamandua.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

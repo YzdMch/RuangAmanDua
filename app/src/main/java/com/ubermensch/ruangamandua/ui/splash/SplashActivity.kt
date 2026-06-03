@@ -1,4 +1,4 @@
-package com.ruangaman.app.ui.splash
+package com.ubermensch.ruangamandua.ui.splash
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -8,9 +8,9 @@ import android.os.Looper
 import kotlin.jvm.java
 import androidx.appcompat.app.AppCompatActivity
 import com.ubermensch.ruangamandua.databinding.ActivitySplashBinding
-import com.ruangaman.app.ui.auth.AuthActivity
-import com.ruangaman.app.ui.dashboard.MainActivity
-import com.ruangaman.app.utils.SessionManager
+import com.ubermensch.ruangamandua.ui.auth.AuthActivity
+import com.ubermensch.ruangamandua.ui.dashboard.MainActivity
+import com.ubermensch.ruangamandua.utils.SessionManager
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {

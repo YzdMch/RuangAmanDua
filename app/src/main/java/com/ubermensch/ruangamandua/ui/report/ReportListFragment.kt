@@ -1,4 +1,4 @@
-package com.ruangaman.app.ui.report
+package com.ubermensch.ruangamandua.ui.report
 
 import android.app.AlertDialog
 import android.os.Bundle
@@ -7,11 +7,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.ruangaman.app.R
+import com.ubermensch.ruangamandua.R
 import com.ubermensch.ruangamandua.data.local.RuangAmanDatabase
 import com.ubermensch.ruangamandua.data.local.repository.RuangAmanRepository
-import com.ruangaman.app.databinding.FragmentReportListBinding
-import com.ruangaman.app.utils.SessionManager
+import com.ubermensch.ruangamandua.databinding.FragmentReportListBinding
+import com.ubermensch.ruangamandua.utils.SessionManager
 
 class ReportListFragment : Fragment() {
     private var _binding: FragmentReportListBinding? = null

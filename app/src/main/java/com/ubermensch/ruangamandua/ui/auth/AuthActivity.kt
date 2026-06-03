@@ -1,4 +1,4 @@
-package com.ruangaman.app.ui.auth
+package com.ubermensch.ruangamandua.ui.auth
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

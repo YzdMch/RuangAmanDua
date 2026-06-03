@@ -1,4 +1,4 @@
-package com.ruangaman.app.ui.profile
+package com.ubermensch.ruangamandua.ui.profile
 
 import androidx.lifecycle.*
 import com.ubermensch.ruangamandua.data.local.repository.RuangAmanRepository
