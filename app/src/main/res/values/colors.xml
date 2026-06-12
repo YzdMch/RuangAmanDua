@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="teal_primary">#1B97C2</color>
+    <color name="teal_dark">#0D6E8A</color>
+    <color name="teal_light">#E3F4FA</color>
+    <color name="background">#F0F4F8</color>
+    <color name="surface_white">#FFFFFF</color>
+    <color name="text_primary">#1A1D1E</color>
+    <color name="text_secondary">#6B7280</color>
+    <color name="text_hint">#9CA3AF</color>
+    <color name="red_danger">#EF4444</color>
+    <color name="green_success">#22C55E</color>
+    <color name="orange_warning">#F97316</color>
+    <color name="status_terkirim">#1B97C2</color>
+    <color name="status_ditinjau">#F97316</color>
+    <color name="status_investigasi">#8B5CF6</color>
+    <color name="status_selesai">#22C55E</color>
+    <color name="divider">#E5E7EB</color>
+    <color name="card_shadow">#0D000000</color>
 </resources>

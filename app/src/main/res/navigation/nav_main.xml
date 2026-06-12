@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/homeFragment">
+
+    <!-- HOME -->
+    <fragment android:id="@+id/homeFragment"
+        android:name="com.ubermensch.ruangamandua.ui.dashboard.HomeFragment"
+        android:label="Home">
+        <action android:id="@+id/action_homeFragment_to_reportFragment"
+            app:destination="@id/reportFragment" />
+        <action android:id="@+id/action_homeFragment_to_educationFragment"
+            app:destination="@id/educationFragment" />
+        <action android:id="@+id/action_homeFragment_to_articleDetailFragment"
+            app:destination="@id/articleDetailFragment" />
+    </fragment>
+
+    <!-- REPORT LIST -->
+    <fragment android:id="@+id/reportListFragment"
+        android:name="com.ubermensch.ruangamandua.ui.report.ReportListFragment"
+        android:label="Laporan">
+        <action android:id="@+id/action_reportListFragment_to_reportFragment"
+            app:destination="@id/reportFragment" />
+        <action android:id="@+id/action_reportListFragment_to_reportDetailFragment"
+            app:destination="@id/reportDetailFragment">
+            <argument android:name="reportId" app:argType="integer" />
+        </action>
+    </fragment>
+
+    <!-- FORM LAPORAN -->
+    <fragment android:id="@+id/reportFragment"
+        android:name="com.ubermensch.ruangamandua.ui.report.ReportFragment"
+        android:label="Buat Laporan" />
+
+    <!-- DETAIL LAPORAN -->
+    <fragment android:id="@+id/reportDetailFragment"
+        android:name="com.ubermensch.ruangamandua.ui.report.ReportDetailFragment"
+        android:label="Detail Laporan">
+        <argument android:name="reportId" app:argType="integer" />
+    </fragment>
+
+    <!-- EDUCATION -->
+    <fragment android:id="@+id/educationFragment"
+        android:name="com.ubermensch.ruangamandua.ui.education.EducationFragment"
+        android:label="Edukasi">
+        <action android:id="@+id/action_educationFragment_to_articleDetailFragment"
+            app:destination="@id/articleDetailFragment">
+            <argument android:name="articleId" app:argType="integer" />
+        </action>
+    </fragment>
+
+    <!-- ARTICLE DETAIL -->
+    <fragment android:id="@+id/articleDetailFragment"
+        android:name="com.ubermensch.ruangamandua.ui.education.ArticleDetailFragment"
+        android:label="Detail Artikel">
+        <argument android:name="articleId" app:argType="integer" />
+    </fragment>
+
+    <!-- COMMUNITY -->
+    <fragment android:id="@+id/communityFragment"
+        android:name="com.ubermensch.ruangamandua.ui.community.CommunityFragment"
+        android:label="Komunitas">
+        <action android:id="@+id/action_communityFragment_to_createPostFragment"
+            app:destination="@id/createPostFragment" />
+        <action android:id="@+id/action_communityFragment_to_postDetailFragment"
+            app:destination="@id/postDetailFragment">
+            <argument android:name="postId" app:argType="integer" />
+        </action>
+    </fragment>
+
+    <fragment android:id="@+id/createPostFragment"
+        android:name="com.ubermensch.ruangamandua.ui.community.CreatePostFragment"
+        android:label="Buat Post" />
+
+    <fragment android:id="@+id/postDetailFragment"
+        android:name="com.ubermensch.ruangamandua.ui.community.PostDetailFragment"
+        android:label="Detail Post">
+        <argument android:name="postId" app:argType="integer" />
+    </fragment>
+
+    <!-- PROFILE -->
+    <fragment android:id="@+id/profileFragment"
+        android:name="com.ubermensch.ruangamandua.ui.profile.ProfileFragment"
+        android:label="Profil">
+        <action android:id="@+id/action_profileFragment_to_reportListFragment"
+            app:destination="@id/reportListFragment" />
+        <action android:id="@+id/action_profileFragment_to_savedArticlesFragment"
+            app:destination="@id/savedArticlesFragment" />
+        <action android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+    </fragment>
+
+    <fragment android:id="@+id/savedArticlesFragment"
+        android:name="com.ubermensch.ruangamandua.ui.profile.SavedArticlesFragment"
+        android:label="Artikel Disimpan" />
+
+    <fragment android:id="@+id/editProfileFragment"
+        android:name="com.ubermensch.ruangamandua.ui.profile.EditProfileFragment"
+        android:label="Edit Profil" />
+</navigation>

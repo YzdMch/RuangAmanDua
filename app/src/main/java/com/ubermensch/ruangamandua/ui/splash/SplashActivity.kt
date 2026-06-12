@@ -1,21 +1,33 @@
 package com.ubermensch.ruangamandua.ui.splash
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.os.Handler
+import android.os.Looper
+import kotlin.jvm.java
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.ubermensch.ruangamandua.R
+import com.ubermensch.ruangamandua.databinding.ActivitySplashBinding
+import com.ubermensch.ruangamandua.ui.auth.AuthActivity
+import com.ubermensch.ruangamandua.ui.dashboard.MainActivity
+import com.ubermensch.ruangamandua.utils.SessionManager
 
+@SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
+    private lateinit var binding: ActivitySplashBinding
+    private lateinit var sessionManager: SessionManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_splash)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+        binding = ActivitySplashBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        sessionManager = SessionManager(this)
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            val dest = if (sessionManager.isLoggedIn()) MainActivity::class.java
+            else AuthActivity::class.java
+            startActivity(Intent(this, dest))
+            finish()
+        }, 2000)
     }
 }

@@ -1,60 +1,72 @@
 package com.ubermensch.ruangamandua.ui.community
 
 import android.os.Bundle
+import android.view.*
+import kotlin.collections.forEach
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.ubermensch.ruangamandua.R
+import com.ubermensch.ruangamandua.data.local.RuangAmanDatabase
+import com.ubermensch.ruangamandua.data.local.repository.RuangAmanRepository
+import com.ubermensch.ruangamandua.databinding.FragmentCommunityBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [CommunityFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class CommunityFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var _binding: FragmentCommunityBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var postAdapter: CommunityPostAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    private val viewModel: CommunityViewModel by viewModels {
+        CommunityViewModelFactory(RuangAmanRepository(RuangAmanDatabase.getInstance(requireContext())))
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        _binding = FragmentCommunityBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        postAdapter = CommunityPostAdapter(
+            onLikeClick = { post -> if (post.isLiked) viewModel.unlikePost(post.id) else viewModel.likePost(post.id) },
+            onItemClick = { post ->
+                findNavController().navigate(
+                    CommunityFragmentDirections.actionCommunityFragmentToPostDetailFragment(post.id)
+                )
+            }
+        )
+        binding.rvPosts.apply { layoutManager = LinearLayoutManager(context); adapter = postAdapter }
+
+        val filterMap = mapOf(
+            binding.chipAllTopics    to "Semua",
+            binding.chipPeerSupport  to "Peer Support",
+            binding.chipHealingStories to "Healing Stories"
+        )
+        filterMap.forEach { (chip, topic) ->
+            chip.setOnClickListener {
+                filterMap.keys.forEach { it.isSelected = false }
+                chip.isSelected = true; viewModel.loadPosts(topic)
+            }
+        }
+        binding.chipAllTopics.isSelected = true
+
+        binding.etSearch.addTextChangedListener { text ->
+            val q = text.toString().trim()
+            if (q.isEmpty()) viewModel.loadPosts() else viewModel.searchPosts(q)
+        }
+
+        viewModel.posts.observe(viewLifecycleOwner) { posts ->
+            postAdapter.submitList(posts)
+            binding.tvEmpty.visibility = if (posts.isEmpty()) View.VISIBLE else View.GONE
+        }
+
+        binding.fabBuatPost.setOnClickListener {
+            findNavController().navigate(R.id.action_communityFragment_to_createPostFragment)
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_community, container, false)
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment CommunityFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            CommunityFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
+    override fun onDestroyView() { super.onDestroyView(); _binding = null }
 }
